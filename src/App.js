@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import ibo from "./ibo.mp3";
+import chillpop from "./chillpop.mp3";
+import AudioPlayer from "./AudioPlayer";
+import { useRef } from "react";
 
 function App() {
+  const appRef = useRef();
+
+  const tracks = [
+    {
+      title: "Mutlu Ol Yeter",
+      artist: "Ibrahim Tatlises",
+      audioSrc: ibo,
+    },
+    {
+      title: "Chill Pop",
+      artist: "Fantasium",
+      audioSrc: chillpop,
+    },
+  ];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" ref={appRef}>
+      <AudioPlayer appRef={appRef} tracks={tracks} />
     </div>
   );
 }
